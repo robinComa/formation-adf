@@ -1,0 +1,32 @@
+<adf-tree-view-list nodeId="-root-" (nodeClicked)="onClick($event)">
+</adf-tree-view-list>
+
+<adf-document-list *ngIf="nodeEntryId" #documentList [currentFolderId]="nodeEntryId" [contentActions]="true" (preview)="showPreview($event)">
+  <content-actions>
+    <!-- system handler -->
+    <content-action
+      icon="content_copy"
+      target="document"
+      title="copy"
+      permission="update"
+      [disableWithNoPermission]="true"
+      handler="copy">
+    </content-action>
+
+    <!-- custom handler -->
+    <content-action
+      target="document"
+      title="Custom action"
+      (execute)="myCustomAction1($event)">
+    </content-action>
+
+    <!-- combined handler -->
+    <content-action
+      target="document"
+      title="Delete with additional custom callback"
+      handler="delete"
+      permission="delete"
+      (execute)="myCustomActionAfterDelete($event)">
+    </content-action>
+  </content-actions>
+</adf-document-list>
