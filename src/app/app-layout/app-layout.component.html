@@ -3,7 +3,15 @@
   <adf-sidenav-layout-header>
     <ng-template let-toggleMenu="toggleMenu">
       <adf-layout-header id="adf-header" [title]="'Retengr'" color="primary" >
-      </adf-layout-header>
+            <span class="spacer"></span>
+            <button mat-icon-button [matMenuTriggerFor]="langMenu">
+                <mat-icon>language</mat-icon>
+            </button>
+            <mat-menu #langMenu="matMenu">
+                <adf-language-menu></adf-language-menu>
+            </mat-menu>
+        </adf-layout-header>
+
     </ng-template>
   </adf-sidenav-layout-header>
 
@@ -21,6 +29,10 @@
                 <a mat-list-item class="adf-sidenav-link" routerLink="/test">
                     <mat-icon matListIcon class="sidenav-menu-icon">science</mat-icon>
                     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Test</div>
+                </a>
+                <a mat-list-item class="adf-sidenav-link" routerLink="/sandbox">
+                    <mat-icon matListIcon class="sidenav-menu-icon">biotech</mat-icon>
+                    <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Sandbox</div>
                 </a>
                 <a mat-list-item adf-logout class="adf-sidenav-link">
                     <mat-icon matListIcon class="sidenav-menu-icon">exit_to_app</mat-icon>

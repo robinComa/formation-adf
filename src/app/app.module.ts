@@ -36,6 +36,9 @@ import localeFi from '@angular/common/locales/fi';
 import localeDa from '@angular/common/locales/da';
 import localeSv from '@angular/common/locales/sv';
 import { TestComponent } from './test/test.component';
+import { SandboxComponent } from './sandbox/sandbox.component';
+import { SharedModule } from './shared/shared.module';
+import { PermDialogComponent } from './sandbox/perm-dialog/perm-dialog.component';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeDe);
@@ -64,7 +67,8 @@ registerLocaleData(localeSv);
         ContentModule.forRoot(),
         TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateLoaderService }
-        })
+        }),
+        SharedModule
     ],
     declarations: [
         AppComponent,
@@ -73,7 +77,9 @@ registerLocaleData(localeSv);
         DocumentsComponent,
         AppLayoutComponent,
         FileViewComponent,
-        TestComponent
+        TestComponent,
+        SandboxComponent,
+        PermDialogComponent
     ],
     providers: [
         PreviewService,

@@ -7,3 +7,6 @@ router-outlet[name="overlay"] + * {
   right: 0;
 }
 
+.no-padding-dialog-container .mat-dialog-container {
+  padding: 0 0 0 0;
+}

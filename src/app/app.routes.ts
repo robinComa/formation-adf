@@ -23,6 +23,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { FileViewComponent } from './file-view/file-view.component';
 import { TestComponent } from './test/test.component';
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 export const appRoutes: Routes = [
   { path: 'files/:nodeId/view', component: FileViewComponent, canActivate: [AuthGuardEcm], outlet: 'overlay' },
@@ -46,6 +47,11 @@ export const appRoutes: Routes = [
       {
         path: 'test',
         component: TestComponent,
+        canActivate: [AuthGuardEcm]
+      },
+      {
+        path: 'sandbox',
+        component: SandboxComponent,
         canActivate: [AuthGuardEcm]
       }
     ]

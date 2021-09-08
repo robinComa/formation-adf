@@ -1,0 +1,58 @@
+<div class="left-col">
+    <adf-tree-view-list nodeId="-root-" 
+        (nodeClicked)="navigate($event)">
+    </adf-tree-view-list>
+</div>
+
+<div class="right-col">
+
+    <adf-toolbar>
+        <adf-breadcrumb
+            [target]="documentList">
+        </adf-breadcrumb>
+        <button mat-icon-button
+                [adf-create-folder]="documentList.currentFolderId"
+                [title]="'DOCUMENT_LIST.TOOLBAR.NEW_FOLDER' | translate"
+                (success)="onFolderCreated($event)">
+                <mat-icon>create_new_folder</mat-icon>
+        </button>
+        <button mat-icon-button
+            [adf-edit-folder]="documentList.selection[0]?.entry"
+            title="Edit properties" (success)="onNodeEdited($event)">
+            <mat-icon>create</mat-icon>
+        </button>
+    </adf-toolbar>
+    
+    <adf-upload-drag-area [rootFolderId]="documentList.currentFolderId" (success)="reload()">
+        <adf-document-list
+            #documentList
+            [currentFolderId]="'-my-'"
+            [contextMenuActions]="true"
+            [contentActions]="true"
+            (preview)="showPreview($event)"
+            (nodeClick)="onNodeClick($event)">
+            <content-actions>
+                <content-action
+                    target="all"
+                    title="Delete"
+                    permission="delete"
+                    disableWithNoPermission="true"
+                    handler="delete"
+                    (success)="onNodeDeleted($event)"
+                    >
+                </content-action>
+                <content-action
+                    target="all"
+                    title="Manage permissions"
+                    disableWithNoPermission="true"
+                    (execute)="managePermissions($event)">
+                </content-action>
+            </content-actions>
+        </adf-document-list>
+        <adf-pagination
+            [target]="documentList"
+            [supportedPageSizes]="[5, 10, 15, 20]"
+            [pagination]="10">
+        </adf-pagination>
+    </adf-upload-drag-area>
+</div>
