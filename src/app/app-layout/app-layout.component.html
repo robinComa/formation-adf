@@ -3,6 +3,16 @@
   <adf-sidenav-layout-header>
     <ng-template let-toggleMenu="toggleMenu">
       <adf-layout-header id="adf-header" [title]="'Retengr'" color="primary" >
+          <span class="spacer"></span>
+            <adf-search-control 
+                [highlight]="true"
+                [inputType]="text"
+                (optionClicked)="onItemClicked($event)"
+                (submit)="onSearchSubmit($event)">
+                <adf-empty-search-result>
+                    <span>No result</span>
+                </adf-empty-search-result>
+            </adf-search-control>
       </adf-layout-header>
     </ng-template>
   </adf-sidenav-layout-header>

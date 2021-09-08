@@ -36,6 +36,7 @@ import localeFi from '@angular/common/locales/fi';
 import localeDa from '@angular/common/locales/da';
 import localeSv from '@angular/common/locales/sv';
 import { TestComponent } from './test/test.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeDe);
@@ -73,7 +74,8 @@ registerLocaleData(localeSv);
         DocumentsComponent,
         AppLayoutComponent,
         FileViewComponent,
-        TestComponent
+        TestComponent,
+        SearchResultsComponent
     ],
     providers: [
         PreviewService,

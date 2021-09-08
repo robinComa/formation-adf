@@ -17,13 +17,63 @@
     (success)="uploadSuccess($event)"
   >
   </adf-upload-button>
+
+  <button mat-icon-button
+    [adf-create-folder]="documentList.currentFolderId"
+    title="Create new folder"
+    (success)="folderCreated($event)">
+    <mat-icon>create_new_folder</mat-icon>
+  </button>
+
+  <button mat-icon-button
+      [adf-edit-folder]="documentList.selection[0]?.entry"
+      title="Edit details"
+      (success)="reload($event)">
+    <mat-icon>edit</mat-icon>
+  </button>
+  
 </adf-toolbar>
 
 <adf-document-list
   #documentList
   currentFolderId="-root-"
   (preview)="showPreview($event)"
+  contentActions="my-toolbar"
 >
+<content-actions>
+  <content-action
+      icon="content_copy"
+      target="document"
+      title="Copy"
+      permission="update"
+      [disableWithNoPermission]="true"
+      handler="copy">
+  </content-action>
+  <content-action
+      target="document"
+      icon="delete"
+      title="Delete file"
+      handler="delete"
+      permission="delete"
+      (execute)="deleteFile($event)">
+  </content-action>
+  <content-action
+      target="folder"
+      title="Delete folder"
+      handler="delete"
+      permission="delete"
+      (execute)="deleteFolder($event)">
+  </content-action>
+  <content-action
+    icon=""
+    target="folder"
+    title="Copy"
+    permission="update"
+    [disableWithNoPermission]="true"
+    handler="copy">
+  </content-action>
+</content-actions>
+
 </adf-document-list>
 <adf-pagination
   [target]="documentList"

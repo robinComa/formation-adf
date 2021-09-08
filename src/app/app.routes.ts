@@ -23,9 +23,15 @@ import { DocumentsComponent } from './documents/documents.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { FileViewComponent } from './file-view/file-view.component';
 import { TestComponent } from './test/test.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 export const appRoutes: Routes = [
-  { path: 'files/:nodeId/view', component: FileViewComponent, canActivate: [AuthGuardEcm], outlet: 'overlay' },
+  { 
+    path: 'files/:nodeId/view',
+    component: FileViewComponent,
+    canActivate: [AuthGuardEcm],
+    outlet: 'overlay'
+  },
   {
     path: '',
     component: AppLayoutComponent,
@@ -41,6 +47,11 @@ export const appRoutes: Routes = [
       {
         path: 'documents',
         component: DocumentsComponent,
+        canActivate: [AuthGuardEcm]
+      },
+      {
+        path: 'search-results',
+        component: SearchResultsComponent,
         canActivate: [AuthGuardEcm]
       },
       {

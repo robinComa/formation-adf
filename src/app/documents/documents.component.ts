@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, OnInit } from '@angular/core';
 import { NotificationService } from '@alfresco/adf-core';
 import { DocumentListComponent } from '@alfresco/adf-content-services';
 import { PreviewService } from '../services/preview.service';
@@ -25,7 +25,7 @@ import { PreviewService } from '../services/preview.service';
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
 
   @Input()
   showViewer = false;
@@ -34,7 +34,13 @@ export class DocumentsComponent {
   @ViewChild('documentList')
   documentList: DocumentListComponent;
 
-  constructor(private notificationService: NotificationService, private preview: PreviewService) {
+  constructor(
+    private notificationService: NotificationService,
+    private preview: PreviewService
+  ) {
+  }
+
+  ngOnInit(): void {
   }
 
   uploadSuccess(event: any) {
@@ -54,4 +60,22 @@ export class DocumentsComponent {
     this.nodeId = null;
   }
 
+  folderCreated(event: any) {
+    this.notificationService.openSnackMessage('Folder created');
+    this.documentList.reload();
+  }
+
+  deleteFile(event: any) {
+    this.notificationService.openSnackMessage('File deleted');
+    this.documentList.reload();
+  }
+  
+  deleteFolder(event: any) {
+    this.notificationService.openSnackMessage('Folder deleted');
+    this.documentList.reload();
+  }
+
+  reload(event: any) {
+    this.documentList.reload();
+  }
 }

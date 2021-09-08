@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
+import { ResultSetRowEntry } from '@alfresco/js-api';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,20 @@ import { Component } from '@angular/core';
 })
 export class AppLayoutComponent {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
+  onItemClicked(resultSet: ResultSetRowEntry) {
+    this.router.navigate([{
+      outlets: {
+        overlay: ['files', resultSet.entry.id, 'view']
+      }
+    }]);
+  }
+
+  onSearchSubmit(event: KeyboardEvent)   {
+    this.router.navigate(['search-results'], {
+      queryParams: { q: (event.target as HTMLInputElement).value }
+    });
+  }
 }
