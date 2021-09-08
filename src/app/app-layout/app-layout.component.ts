@@ -16,6 +16,7 @@
  */
 
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,22 @@ import { Component } from '@angular/core';
 })
 export class AppLayoutComponent {
 
-  constructor() {
+  expandSideNav = true;
+
+  constructor(private translate: TranslateService) {
   }
+
+  changeLanguage(newLanguage: string = "en"):void{
+    this.translate.use(newLanguage);
+  }
+
+  toggleSideNav(){
+    this.expandSideNav=!this.expandSideNav;
+  }
+
+  setState(e){
+    console.log(e);
+  }
+
 
 }

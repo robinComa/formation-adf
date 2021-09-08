@@ -17,8 +17,9 @@
 
 import { Component, ViewChild, Input } from '@angular/core';
 import { NotificationService } from '@alfresco/adf-core';
-import { DocumentListComponent } from '@alfresco/adf-content-services';
+import { DocumentListComponent, ShareDataRow } from '@alfresco/adf-content-services';
 import { PreviewService } from '../services/preview.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-documents',
@@ -34,11 +35,12 @@ export class DocumentsComponent {
   @ViewChild('documentList')
   documentList: DocumentListComponent;
 
-  constructor(private notificationService: NotificationService, private preview: PreviewService) {
+  constructor(private notificationService: NotificationService, private preview: PreviewService, private translate: TranslateService) {
   }
 
   uploadSuccess(event: any) {
-    this.notificationService.openSnackMessage('File uploaded');
+    console.log(event);
+    this.notificationService.openSnackMessage(this.translate.instant ("UPLOAD_MESSAGE.SUCCESS", {value: event.value.entry.name}));
     this.documentList.reload();
   }
 
@@ -49,9 +51,26 @@ export class DocumentsComponent {
     }
   }
 
+  onCheckboxClicked(event, context: {row: ShareDataRow}): void {
+    event.stopPropagation();
+    console.log(event.srcElement.firstChild.checked);
+    console.log(context.row.node.entry.id);
+    console.log(event);
+  }
+
   onGoBack(event: any) {
     this.showViewer = false;
     this.nodeId = null;
   }
+
+  myCustomAction1(event) {
+    let entry = event.value.entry;
+    alert(`Custom document action for ${entry.name}`);
+}
+
+myCustomActionAfterDelete(event) {
+    let entry = event.value.entry;
+    alert(`Custom callback after delete system action for ${entry.name}`);
+}
 
 }

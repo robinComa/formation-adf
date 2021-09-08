@@ -15,6 +15,10 @@
     "redirectUri": "/",
     "redirectUriLogout": "/logout"
   },
+  "sideNav" : {
+    "preserveState" : true,
+    "expandedSidenav" : true
+  },
   "application": {
     "name": "Alfresco ADF Application"
   },

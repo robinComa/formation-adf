@@ -255,5 +255,20 @@
     }
   },
   "GROUP-TITLE1-TRANSLATION-KEY": "CUSTOM TITLE TRANSLATION ONE",
-  "GROUP-TITLE2-TRANSLATION-KEY": "CUSTOM TITLE TRANSLATION TWO"
+  "GROUP-TITLE2-TRANSLATION-KEY": "CUSTOM TITLE TRANSLATION TWO",
+  "LANGUAGE": {
+    "CHANGE": "Change language",
+    "DEFAULT": "Default",
+    "FRENCH": "Fr*nch",
+    "ENGLISH": "Bri'ish",
+    "GERMAN": "German",
+    "DUTCH": "NL"
+   },
+   "UPLOAD_MESSAGE":{
+     "SUCCESS": "The file {{value}} has been uploaded succesfully",
+     "FAILURE": "An error occured during the import of this file: {{value}}"
+   },
+   "COL_KEYS":{
+    "IS_LOCKED":"Locked"
+   }
 }

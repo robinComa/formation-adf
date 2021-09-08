@@ -231,5 +231,13 @@
     "APP_ID_TYPE_ERROR": "App-ID muss eine Zahl sein"
   },
   "GROUP-TITLE1-TRANSLATION-KEY": "Übersetzung benutzerdefinierter Titel 1",
-  "GROUP-TITLE2-TRANSLATION-KEY": "Übersetzung benutzerdefinierter Titel 2"
+  "GROUP-TITLE2-TRANSLATION-KEY": "Übersetzung benutzerdefinierter Titel 2",
+  "LANGUAGE": {
+    "CHANGE": "Changer de langue",
+    "DEFAULT": "Par défaut",
+    "FRENCH": "Fançais",
+    "ENGLISH": "Bri'ish",
+    "GERMAN": "German",
+    "DUTCH": "NL"
+   }
 }

@@ -22,8 +22,65 @@
 <adf-document-list
   #documentList
   currentFolderId="-root-"
-  (preview)="showPreview($event)"
+  
+  (preview)="showPreview($event)" 
+  [headerFilters]="true"
+  [includeFields]="['isLocked', 'isLink']"
+  [contextMenuActions]="true"
+  [contentActions]="true"
 >
+  <data-columns>
+    <data-column [sortable]="false" key="id" title="MY.RESOURCE.KEY">
+      <ng-template let-entry>
+        <mat-checkbox (click)="onCheckboxClicked($event, entry)"></mat-checkbox>
+      </ng-template>
+    </data-column>
+    <data-column key="isLocked"  title="COL_KEYS.IS_LOCKED">
+      <ng-template let-context>
+        <!--Attention a bien rajouter [includeFields]="['isLocked', 'isLink']" dans la datalist sinon ça ne marche pas comme prévu -->
+        <mat-icon>{{ context.row.node.entry.isLocked ? 'lock': 'lock_open' }}</mat-icon>
+      </ng-template>
+    </data-column>
+    <data-column key="$thumbnail" type="image"></data-column>
+    <data-column title="Name" key="name" class="full-width ellipsis-cell"></data-column>
+    <data-column
+      title="Created By" 
+      key="createdByUser.displayName">
+    </data-column>
+  </data-columns>
+
+  <content-actions>
+
+    <!-- system handler -->
+    <content-action
+        icon="content_copy"
+        target="document"
+        title="copy"
+        permission="update"
+        [disableWithNoPermission]="true"
+        handler="copy">
+    </content-action>
+
+    <!-- custom handler -->
+    <content-action
+      icon="lock"
+        target="document"
+        title="Lock/Unlock"
+        handler="lock"
+        >
+    </content-action>
+
+    <!-- combined handler -->
+    <content-action
+        target="document"
+        title="Delete with additional custom callback"
+        handler="delete"
+        permission="delete"
+        (execute)="myCustomActionAfterDelete($event)">
+    </content-action>
+
+</content-actions>
+
 </adf-document-list>
 <adf-pagination
   [target]="documentList"

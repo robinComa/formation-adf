@@ -231,5 +231,20 @@
     "APP_ID_TYPE_ERROR": "L'ID d'application doit être un numéro"
   },
   "GROUP-TITLE1-TRANSLATION-KEY": "Titre personnalisé traduction un",
-  "GROUP-TITLE2-TRANSLATION-KEY": "Titre personnalisé traduction deux"
+  "GROUP-TITLE2-TRANSLATION-KEY": "Titre personnalisé traduction deux",
+  "LANGUAGE": {
+   "CHANGE": "Changer de langue",
+   "DEFAULT": "Par défaut",
+   "FRENCH": "Fançais",
+   "ENGLISH": "Anglois",
+   "GERMAN": "Allemand",
+   "DUTCH": "Gooiemorgen Iedereen"
+  },
+  "UPLOAD_MESSAGE":{
+    "SUCCESS": "Le fichier {{value}} a bien été importé.",
+    "FAILURE": "Une erreur est survenue lors de l'import du fichier {{value}}"
+  },
+  "COL_KEYS":{
+    "IS_LOCKED":"Verrouillé"
+   }
 }

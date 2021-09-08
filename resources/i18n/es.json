@@ -231,5 +231,6 @@
     "APP_ID_TYPE_ERROR": "El ID de aplicación debe ser un número"
   },
   "GROUP-TITLE1-TRANSLATION-KEY": "Traducción de título personalizado 1",
-  "GROUP-TITLE2-TRANSLATION-KEY": "Traducción de título personalizado 2"
+  "GROUP-TITLE2-TRANSLATION-KEY": "Traducción de título personalizado 2",
+  "LANGUAGE": "Donde esta la biblioteca?"
 }
